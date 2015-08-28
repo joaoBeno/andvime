@@ -19,6 +19,7 @@ public class WebViewActivity extends AppCompatActivity {
     public final static String API_COD = "br.net.beno.andvime.CODIGO_API";
 
     private WebView webView;
+    private Boolean chamado_feito = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class WebViewActivity extends AppCompatActivity {
             sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
 
+        //TODO: Remover LOG
         Log.e("================> ","Hex format : " + sb.toString());
 
 //        Map<String, String> extraHeaders = new HashMap<>();
@@ -63,10 +65,15 @@ public class WebViewActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
+                //TODO: Remover LOG
                 Log.e("================> ", "url: " + url);
-                if (url.contains("localhost")) {
+                if (url.contains("http://localhost/?") && !chamado_feito) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra(API_COD, url);
+
+                    chamado_feito = !chamado_feito;
+
+                    startActivity(intent);
                 }
             }
         });
