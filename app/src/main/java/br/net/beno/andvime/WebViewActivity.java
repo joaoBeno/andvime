@@ -1,5 +1,6 @@
 package br.net.beno.andvime;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class WebViewActivity extends AppCompatActivity {
+
+    public final static String API_COD = "br.net.beno.andvime.CODIGO_API";
 
     private WebView webView;
 
@@ -60,7 +63,11 @@ public class WebViewActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
-                Log.e("================> ","url: " + url);
+                Log.e("================> ", "url: " + url);
+                if (url.contains("localhost")) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra(API_COD, url);
+                }
             }
         });
         webView.loadUrl("https://api.vimeo.com/oauth/authorize?response_type=code&client_id=66d90b2d6f01e0f8e7f4bc0851834ae290d6639b&redirect_uri=http://localhost&state="+sb.toString());
