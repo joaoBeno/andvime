@@ -27,6 +27,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.net.beno.andvime.MainActivity" />
         </activity>
+        <activity
+            android:name=".LoadLoginActivity"
+            android:label="@string/title_activity_load_login"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.net.beno.andvime.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

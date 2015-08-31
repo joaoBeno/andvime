@@ -4,14 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class WebViewActivity extends AppCompatActivity {
@@ -52,23 +49,12 @@ public class WebViewActivity extends AppCompatActivity {
             sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
 
-        //TODO: Remover LOG
-        Log.e("================> ","Hex format : " + sb.toString());
-
-//        Map<String, String> extraHeaders = new HashMap<>();
-//        extraHeaders.put("response_type", "code");
-//        extraHeaders.put("client_id", "66d90b2d6f01e0f8e7f4bc0851834ae290d6639b");
-//        extraHeaders.put("redirect_uri", "http://localhost");
-//        extraHeaders.put("state", sb.toString());
-
         webView = (WebView) findViewById(R.id.visao_web);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
-                //TODO: Remover LOG
-                Log.e("================> ", "url: " + url);
                 if (url.contains("http://localhost/?") && !chamado_feito) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoadLoginActivity.class);
                     intent.putExtra(API_COD, url);
 
                     chamado_feito = !chamado_feito;
