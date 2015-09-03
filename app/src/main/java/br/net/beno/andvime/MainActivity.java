@@ -30,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if(!settings.getString("token","").equals("")) {
+            Intent intent = new Intent(getApplicationContext(), ListaVideosActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     public void abrirLogin(View view) {

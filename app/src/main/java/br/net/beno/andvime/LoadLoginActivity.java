@@ -124,8 +124,10 @@ public class LoadLoginActivity extends AppCompatActivity {
                 editor.putString("foto_link", resposta.getJSONObject("user").getJSONArray("pictures").getJSONObject(3).getString("link"));
 
                 // Commit the edits!
-                editor.apply();
+                editor.commit();
 
+                Intent intent = new Intent(getApplicationContext(), ListaVideosActivity.class);
+                startActivity(intent);
 
             } catch (JSONException e) {
                 e.printStackTrace();

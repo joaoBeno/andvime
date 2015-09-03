@@ -35,6 +35,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.net.beno.andvime.MainActivity" />
         </activity>
+        <activity
+            android:name=".ListaVideosActivity"
+            android:label="@string/title_activity_lista_videos" >
+        </activity>
     </application>
 
 </manifest>
