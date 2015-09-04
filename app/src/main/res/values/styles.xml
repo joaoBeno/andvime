@@ -1,8 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FF03A9F4</item>
+        <item name="colorPrimaryDark">#FF0288D1</item>
+        <item name="colorAccent">#FFFF5722</item>
+        <!-- <item name="colorPrimaryLight">#FFB3E5FC</item>
+        <item name="textColorPrimary">#FF212121</item>
+        <item name="textColorSecondary">#FF727272</item> -->
+
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#FFFF5722</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:background">#FF03A9F4</item>
     </style>
 
 </resources>
